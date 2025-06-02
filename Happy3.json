@@ -1,0 +1,27 @@
+	ctx.translate( -hw, -hh );
+	
+	if( done )
+		for( var l = 0; l < letters.length; ++l )
+			letters[ l ].reset();
+}
+
+for( var i = 0; i < opts.strings.length; ++i ){
+	for( var j = 0; j < opts.strings[ i ].length; ++j ){
+		letters.push( new Letter( opts.strings[ i ][ j ], 
+														j * opts.charSpacing + opts.charSpacing / 2 - opts.strings[ i ].length * opts.charSize / 2,
+														i * opts.lineHeight + opts.lineHeight / 2 - opts.strings.length * opts.lineHeight / 2 ) );
+	}
+}
+
+anim();
+
+window.addEventListener( 'resize', function(){
+	
+	w = c.width = window.innerWidth;
+	h = c.height = window.innerHeight;
+	
+	hw = w / 2;
+	hh = h / 2;
+	
+	ctx.font = opts.charSize + 'px Verdana';
+})
